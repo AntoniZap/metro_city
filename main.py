@@ -10,9 +10,9 @@ def load_data(filename):
 
 
 def main():
-    print("Hello, world!")
+    global metro
+    global settlements
     load_data("PL.txt")
-    print(metro.iloc[:, [2, 6, 7, 14]])
 
     radius_metro = {}
 
@@ -20,8 +20,30 @@ def main():
         city_name = city.iloc[2]
         population = city.iloc[14]
         radius_metro[city_name] = radius(population)
+    cities_to_metros = {}
 
-    print(radius_metro)
+    for index, settlement in settlements.iterrows():
+        for indext, city in metro.iterrows():
+
+            settlement_lat = settlement.iloc[4]
+            settlement_lon = settlement.iloc[5]
+            metro_name = city.iloc[2]
+            metro_lat = city.iloc[4]
+            metro_lon = city.iloc[5]
+            distance = calculate_distance(settlement_lat, settlement_lon,metro_lat, metro_lon)
+
+            if distance < radius_metro[metro_name]:
+
+                settlement_name = settlement.iloc[2]
+                cities_to_metros[settlement_name] = metro_name
+
+
+    print(cities_to_metros)
+    print(len(cities_to_metros))
+
+    print(calcualate_metrocity_impact(100, 1))
+    print(calcualate_metrocity_impact(100, 20))
+
 
 if __name__ == "__main__":
     main()
