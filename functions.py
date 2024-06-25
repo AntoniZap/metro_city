@@ -34,3 +34,6 @@ def find_n_smallest_indexes_2d(matrix, n):
     smallest_with_indexes = heapq.nlargest(n, flattened)
     smallest_indexes = [(row, col) for value, row, col in smallest_with_indexes]
     return smallest_indexes
+
+def first_digit_of_tuple(t):
+    return int(str(t[0])[0])
