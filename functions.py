@@ -2,6 +2,8 @@ import math
 import numpy as np
 import pandas
 import heapq
+import time
+
 
 
 def radius(population):

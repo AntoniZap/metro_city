@@ -1,6 +1,4 @@
 from functions import *
-import time
-
 
 # retrieve all settlements and metrocities
 def load_data(filename):
@@ -18,15 +16,13 @@ def main():
     global settlements
     load_data("PL.txt")
 
-    # max_value = 100
     settlements_to_metros = {}
-    interation_number = 1
-    # max_value >= 0.2465969639416065 and
+    #interation_number = 1
 
     while len(settlements) != 0:
 
-        before_settlements = len(settlements)
-        before_settlements_to_metros = len(settlements_to_metros)
+        #before_settlements = len(settlements)
+        #before_settlements_to_metros = len(settlements_to_metros)
 
         # calculate all radius of all metrocities
         radius_metro = {}
@@ -69,18 +65,15 @@ def main():
                         settlements.iloc[row_index, 5]))] = metro.iloc[col_index, 2]
                 metro.iloc[col_index, 14] += settlements.iloc[row_index, 14]
 
-        # remove n most impacted settlements already merged
-        #if (len(settlements) > number_of_indexes):
+        #remove settlements that were used this iteration
         for i in reversed(indexes):
             row_index = i[0]
             settlements.drop(index=settlements.index[row_index], inplace=True)
-        #else:
-        #    settlements = {}
 
-        print("Iteration nr. " + str(interation_number))
-        print("Current hashmap len: " + str(len(settlements_to_metros)) + " added: " + str(len(settlements_to_metros)-before_settlements_to_metros))
-        print("Current settlements len: " + str(len(settlements)) + " removed: " + str(before_settlements-len(settlements)))
-        interation_number += 1
+        #print("Iteration nr. " + str(interation_number))
+        #print("Current hashmap len: " + str(len(settlements_to_metros)) + " added: " + str(len(settlements_to_metros)-before_settlements_to_metros))
+        #print("Current settlements len: " + str(len(settlements)) + " removed: " + str(before_settlements-len(settlements)))
+        #interation_number += 1
 
     # print results
     end_time = time.time()
@@ -89,7 +82,6 @@ def main():
     print(f"Elapsed time: {elapsed_time} seconds")
     print("Current hashmap len: " + str(len(settlements_to_metros)) + " Amount of metrocities: " + str(len(metro)))
     print(settlements_to_metros)
-    #print(settlements)
 
 
 if __name__ == "__main__":
