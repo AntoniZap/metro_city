@@ -35,7 +35,7 @@ def calculate_distance(point_a_lat, point_a_lon, point_b_lat, point_b_lon):
     return distance
 
 
-def find_n_smallest_indexes_2d(matrix, n):
+def find_n_largest_indexes_2d(matrix, n):
     flattened = [(matrix[i][j], i, j) for i in range(len(matrix)) for j in range(len(matrix[0]))]
     smallest_with_indexes = heapq.nlargest(n, flattened)
     smallest_indexes = [(row, col) for value, row, col in smallest_with_indexes]

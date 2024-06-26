@@ -48,7 +48,7 @@ def main():
 
         # find n most impacted settlements
         number_of_indexes = 200
-        indexes = find_n_smallest_indexes_2d(arr, number_of_indexes)
+        indexes = find_n_largest_indexes_2d(arr, number_of_indexes)
         indexes = sorted(indexes)
 
         # try to merge n most impacted settlements with metrocities
@@ -80,7 +80,7 @@ def main():
     elapsed_time = end_time - start_time
     print("Finish")
     print(f"Elapsed time: {elapsed_time} seconds")
-    print("Current hashmap len: " + str(len(settlements_to_metros)) + " Amount of metrocities: " + str(len(metro)))
+    print("Current dictionary len: " + str(len(settlements_to_metros)) + " Amount of metrocities: " + str(len(metro)))
     print(settlements_to_metros)
 
 
